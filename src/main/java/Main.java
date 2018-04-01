@@ -1,3 +1,5 @@
+import zumi.util.ArchiveUtils;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -95,6 +97,9 @@ public class Main {
                 //ファイル移動
                 Path dest = Paths.get(workDir.toString() + "/" + entry.getFileName().toString());
                 Files.move(entry, dest);
+
+                //ファイル解凍
+                ArchiveUtils.extractTarGz(dest.toString(), workDir.toString());
             }
         }
 
